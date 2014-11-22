@@ -11,7 +11,7 @@ Syn flood implementation with raw sockets. The project can be expanded and offer
   <ul> MAC Spoofing </ul>
   <ul> ICMP Flood </ul>
   <ul> Xmas Scan </ul>
-  <ul> Syn scan  </ul>
+  <ul> Syn Scan  </ul>
 </li>
 <li> Next iterations:
   <ul> Thinking </ul>
