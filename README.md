@@ -6,7 +6,7 @@ Syn flood implementation with raw sockets. The project can be expanded and offer
 <li>Actually:
     <ul> Syn flood </ul>
     Testing
-    <img src="[IMG]http://i60.tinypic.com/1037wo2.png[/IMG]/>
+    <img src="http://i60.tinypic.com/1037wo2.png"/>
 </li>
 <li> Next iteration:
   <ul> TCP Reset </ul>
