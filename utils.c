@@ -1,7 +1,8 @@
 #include "utils.h"
 #include <time.h>
 #include <stdlib.h>
-unsigned short checksum(unsigned short *buffer, int length)
+
+unsigned short checksum_md5(unsigned short *buffer, int length)
 {
     unsigned long sum;
     for(sum=0; length>0; length--){
@@ -11,6 +12,7 @@ unsigned short checksum(unsigned short *buffer, int length)
     }
     return (unsigned short)(~sum);
 }
+
 
 unsigned int generate_random_ip_v4(){
 	char first_byte = (rand()%254)&0x7F;

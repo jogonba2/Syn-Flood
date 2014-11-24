@@ -3,7 +3,7 @@
 #include <netinet/ip.h>
 #include <netinet/tcp.h>
 
-#define PCKT_LEN 8192
+#define DEFAULT_PCKT_LEN 8192
 
 typedef struct ip_header
 {
@@ -52,6 +52,7 @@ typedef struct icmp_header{
     unsigned int specific_information:32;
 }ICMP_HEADER,*P_ICMP_HEADER;
 
+
 typedef struct udp_header{
 	unsigned short source_port;
 	unsigned short remote_port;
@@ -79,9 +80,9 @@ typedef struct dhcp_header{
 	unsigned int boot_server_addr;
 	unsigned int relay_agent_addr;
 	unsigned long long int client_hw_addr;
-	unsigned char[64] server_host_name;
-	unsigned char[128] boot_filename;
-}DHCP_HEADER,*P_ETH_FRAME;
+	unsigned char* server_host_name;
+	unsigned char* boot_filename;
+}DHCP_HEADER,*P_DHCP_HEADER;
 
 /** DNS session layer (test) **/
 typedef struct dns_header{
@@ -95,5 +96,6 @@ typedef struct dns_header{
 	unsigned short total_authority;
 	unsigned short total_additional;
 }DNS_HEADER,*P_DNS_HEADER;
-
 // Añadir más headers //
+
+
